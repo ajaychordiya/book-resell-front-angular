@@ -1,0 +1,62 @@
+<br />
+<br />
+<div class="container-fluid p-5">
+  <div *ngIf="books">
+    <div class="row">
+      <div class="col-lg-7">
+        <img
+          src="http://localhost:3000/{{ books.imgUrl }}"
+          class="card-img-top"
+          alt="..."
+          style="height: 350px; width: 50%; margin: 50px"
+        />
+      </div>
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h1>&#8377; {{ books.price }}</h1>
+            <br />
+            <br />
+            <h3 class="card-subtitle mb-2 text-muted">{{ books.city }}</h3>
+          </div>
+        </div>
+        <br />
+        <div class="card">
+          <div class="card-body">
+            <h1>Seller description</h1>
+            <h2 class="card-subtitle mb-2 text-muted">{{ books.user.name }}</h2>
+            <h2 class="card-subtitle mb-2 text-muted">
+              {{ books.user.email }}
+            </h2>
+            <h2 class="card-subtitle mb-2 text-muted">
+              {{ books.user.mobile_no }}
+            </h2>
+            <br />
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <br />
+    <div class="row">
+      <div class="col-lg-7">
+        <div class="card" style="width: 45rem">
+          <h1>Details :</h1>
+          <h2 class="card-subtitle mb-2 text-muted">
+            Title &nbsp;&nbsp;&nbsp;&nbsp;{{ books.title }}
+          </h2>
+          <h2 class="card-subtitle mb-2 text-muted">
+            Author &nbsp;&nbsp;&nbsp;&nbsp;{{ books.author }}
+          </h2>
+          <h2 class="card-subtitle mb-2 text-muted">
+            Publication &nbsp;&nbsp;&nbsp;&nbsp;{{ books.publication }}
+          </h2>
+          <h2 class="card-subtitle mb-2 text-muted">
+            Category &nbsp;&nbsp;&nbsp;&nbsp;{{ books.category }}
+          </h2>
+        </div>
+      </div>
+    </div>
+    <app-recommendation-book></app-recommendation-book>
+  </div>
+</div>

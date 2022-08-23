@@ -1,0 +1,71 @@
+<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+  <mat-card fxFlex="50">
+    <mat-toolbar color="basic">
+      <span>Login </span>
+    </mat-toolbar>
+
+    <form #user="ngForm" (submit)="onSubmit()">
+      <br />
+      <label for="inputEmail" class="visually-hidden">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        placeholder="Email address"
+        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+        [(ngModel)]="email"
+        name="email"
+        #name="ngModel"
+        id="email"
+        minlength="10"
+        required
+        autofocus
+      />
+      <div
+        *ngIf="name.invalid && (name.dirty || name.touched)"
+        class="alert alert-danger"
+      >
+        <div *ngIf="name.errors.required">Email is required.</div>
+        <div *ngIf="name.errors.minlength">
+          email must be at least 10 characters long.
+        </div>
+        <div *ngIf="name.errors.forbiddenName">Email cannot be Bob.</div>
+        <div *ngIf="name.dirty">Invalid email</div>
+      </div>
+      <br />
+      <label for="inputPassword" class="visually-hidden">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Password"
+        [(ngModel)]="password"
+        name="password"
+        minlength="8"
+        #pass="ngModel"
+        required
+      />
+      <br />
+      <div
+        *ngIf="pass.invalid && (pass.dirty || pass.touched)"
+        class="alert alert-danger"
+      >
+        <div *ngIf="pass.errors.required">Password is required.</div>
+        <div *ngIf="pass.errors.minlength">
+          password must be at least 8 characters long.
+        </div>
+        <div *ngIf="pass.errors.forbiddenName">Email cannot be Bob.</div>
+      </div>
+      <button mat-raised-button color="primary">Sign in</button>
+
+      <br />
+      <hr />
+      <h3>Already have account <a routerLink="/register">register</a></h3>
+    </form>
+
+    <div class="alert alert-sucess" *ngIf="showSucessMessage">
+      saved Sucessfully
+    </div>
+    <div class="alert" *ngIf="errorMessages">
+      <div class="alert alert-danger">wrong email or password</div>
+    </div>
+  </mat-card>
+</div>

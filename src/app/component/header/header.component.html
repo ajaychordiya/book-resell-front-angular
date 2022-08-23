@@ -1,0 +1,111 @@
+<nav
+  class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark"
+  style="height: 70px"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/home" style="font-weight: 1000"
+      >Book_Stores</a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <div *ngIf="!isSelected">
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              (change)="onChange($event.target.value)"
+              [(ngModel)]="city"
+            >
+              <option>Select Location</option>
+              <option *ngFor="let city of city1">
+                {{ city }}
+              </option>
+            </select>
+          </div>
+          <div *ngIf="isSelected">
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              (change)="onChange($event.target.value)"
+              [(ngModel)]="city"
+            >
+              <option
+                *ngFor="let city of city1"
+                [selected]="selectCity == city"
+              >
+                {{ city }}
+              </option>
+            </select>
+          </div>
+        </li>
+        <li class="nav-item" style="margin-left: 20px">
+          <form class="d-flex" (submit)="onSubmit1()">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              [(ngModel)]="search"
+              name="search"
+              aria-label="Search"
+            />
+            <button class="btn btn-light" type="submit">Search</button>
+          </form>
+        </li>
+      </ul>
+      <ul class="navbar-nav nav-flex-icons">
+        <li class="nav-item" style="margin-right: 20px">
+          <a
+            class="nav-link waves-effect"
+            routerLink="/contact"
+            routerLinkActive="active"
+            >Contact_us</a
+          >
+        </li>
+        <li class="nav-item" style="margin-right: 20px">
+          <button
+            class="btn btn-light"
+            routerLink="/sell"
+            routerLinkActive="active"
+          >
+            Sell
+          </button>
+        </li>
+        <div *ngIf="!authservice.isLoggedIn()">
+          <li class="nav-item">
+            <a
+              class="nav-link waves-effect"
+              routerLink="/login"
+              routerLinkActive="active"
+              >Login</a
+            >
+          </li>
+        </div>
+
+        <div *ngIf="authservice.isLoggedIn()">
+          <a class="nav-link waves-effect" routerLink="/profile">{{
+            authservice.getUsername()
+          }}</a>
+        </div>
+        <div *ngIf="authservice.isLoggedIn()">
+          <a
+            class="nav-link waves-effect"
+            (click)="logOut()"
+            routerLinkActive="active"
+            >Logout</a
+          >
+        </div>
+      </ul>
+    </div>
+  </div>
+</nav>

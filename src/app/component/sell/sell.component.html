@@ -1,0 +1,141 @@
+<br />
+<br /><br />
+<br />
+<br />
+<h1><b>Post Your AD</b></h1>
+
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <form (submit)="onSubmit()">
+        <label for="title">Title_of_book :</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="title"
+          name="title"
+          [(ngModel)]="title"
+          #t="ngModel"
+          required
+          autofocus
+        />
+        <div
+          *ngIf="t.invalid && (t.dirty || t.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="t.errors.required">title is required.</div>
+        </div>
+        <label for="author">Author :</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="author"
+          name="author"
+          [(ngModel)]="author"
+          #a="ngModel"
+          required
+        />
+        <div
+          *ngIf="a.invalid && (a.dirty || a.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="a.errors.required">author is required.</div>
+        </div>
+
+        <label for="Publication">Publication :</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="publication"
+          name="publication"
+          [(ngModel)]="publication"
+          #pub="ngModel"
+          required
+        />
+        <div
+          *ngIf="pub.invalid && (pub.dirty || pub.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="pub.errors.required">Publication is required.</div>
+        </div>
+
+        <label for="category">Category :</label>
+        <input
+          type="text"
+          class="form-control"
+          list="id-category"
+          placeholder="category"
+          name="category"
+          [(ngModel)]="category"
+          #c="ngModel"
+          required
+        />
+        <datalist id="id-category">
+          <option *ngFor="let c of categorys" [value]="c"></option>
+        </datalist>
+        <div
+          *ngIf="c.invalid && (c.dirty || c.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="c.errors.required">category is required.</div>
+        </div>
+        <hr />
+        <label for="price">Price :</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="price"
+          name="price"
+          [(ngModel)]="price"
+          #p="ngModel"
+          required
+        />
+        <div
+          *ngIf="p.invalid && (p.dirty || p.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="p.errors.required">price is required.</div>
+        </div>
+        <hr />
+        <label for="upload">Upload Files :</label>
+        <div class="input-group mb-3">
+          <!-- [(ngModel)]="imgUrl" -->
+          <input
+            type="file"
+            class="form-control"
+            id="inputGroupFile02"
+            (change)="onFileSelect($event)"
+            name="imgUrl"
+          />
+          <label class="input-group-text" for="inputGroupFile02">Upload</label>
+        </div>
+        <hr />
+        <label for="city">city :</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="city"
+          list="id-city"
+          name="city"
+          [(ngModel)]="city"
+          #name="ngModel"
+          required
+        />
+        <datalist id="id-city">
+          <option *ngFor="let c1 of citys" [value]="c1"></option>
+        </datalist>
+        <div
+          *ngIf="name.invalid && (name.dirty || name.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="name.errors.required">city is required.</div>
+        </div>
+        <button mat-raised-button color="primary">upload</button>
+      </form>
+    </div>
+
+    <div class="alert alert-success" *ngIf="showSucessMessage">
+      saved Successfully
+    </div>
+  </div>
+</div>

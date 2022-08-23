@@ -1,0 +1,42 @@
+<div class="container">
+  <div *ngIf="length">
+    <div class="card" style="margin-top: 20px; width: 80%">
+      <h1 style="margin: 20px">Your Ad</h1>
+    </div>
+    <div class="row" *ngFor="let b of books">
+      <div class="card" style="margin-top: 30px; width: 80%">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-3">
+              <img
+                src="http://localhost:3000/{{ b.imgUrl }}"
+                alt="img"
+                style="width: 170px; height: 180px"
+              />
+            </div>
+            <div class="col-lg-5" style="margin-left: 50px; margin-top: 20px">
+              <a routerLink="/product/{{ b._id }}">
+                <h2 class="card-subtitle mb-2 text-muted">{{ b.title }}</h2></a
+              >
+              <h4 class="card-subtitle mb-2 text-muted">by : {{ b.author }}</h4>
+              <h1>&#8377; {{ b.price }}</h1>
+
+              <h4 class="card-subtitle mb-2 text-muted">{{ b.city }}</h4>
+            </div>
+            <div class="col-lg-2" style="margin-left: 40px; margin-top: 30px">
+              <br />
+              <br />
+              <button
+                mat-raised-button
+                color="primary"
+                routerLink="/delete/{{ b._id }}"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

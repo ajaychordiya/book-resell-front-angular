@@ -1,0 +1,56 @@
+<br />
+<br />
+<br />
+<br />
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div *ngIf="!length">
+        <h1>No Book is Available</h1>
+      </div>
+      <div
+        class="row"
+        *ngFor="let b of books | paginate: { itemsPerPage: 5, currentPage: p }"
+      >
+        <div class="card" style="margin-top: 30px">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-3">
+                <img
+                  src="http://localhost:3000/{{ b.imgUrl }}"
+                  alt="img"
+                  style="width: 170px; height: 180px"
+                />
+              </div>
+              <div class="col-lg-5" style="margin-left: 50px; margin-top: 20px">
+                <a routerLink="/product/{{ b._id }}">
+                  <h2 class="card-subtitle mb-2 text-muted">
+                    {{ b.title | titlecase }}
+                  </h2></a
+                >
+                <h4 class="card-subtitle mb-2 text-muted">
+                  by : {{ b.author }}
+                </h4>
+              </div>
+              <div class="col-lg-2" style="margin-left: 40px; margin-top: 30px">
+                <h1>&#8377; {{ b.price }}</h1>
+                <br />
+                <br />
+
+                <h4 class="card-subtitle mb-2 text-muted">{{ b.city }}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br /><br />
+      <div class="row">
+        <div class="col-lg-8"></div>
+        <div class="col-lg-4">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

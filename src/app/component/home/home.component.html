@@ -1,0 +1,81 @@
+<br />
+<br />
+<br />
+<br />
+<nav class="navbar navbar-expand" style="height: 30px">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            (click)="getBooks(city)"
+            ><h4>Allcategory</h4></a
+          >
+        </li>
+        <div *ngFor="let b of category">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              routerLink="category/{{ b }}"
+              ><h4>{{ b | titlecase }}</h4></a
+            >
+          </li>
+        </div>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<app-carousal></app-carousal>
+
+<br />
+<br />
+
+<div class="container">
+  <h1>Fresh Recommendations</h1>
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5">
+    <div
+      class="col"
+      *ngFor="let b of books | paginate: { itemsPerPage: 10, currentPage: p }"
+    >
+      <div class="card" style="width: 12rem; height: 360px">
+        <!--Card image-->
+        <div class="view overlay">
+          <img
+            src="https://book-resellll.herokuapp.com/{{ b.imgUrl }}"
+            class="card-img-top"
+            alt=""
+          />
+        </div>
+        <!--Card image-->
+
+        <!--Card content-->
+        <div class="card-body">
+          <!--Category & Title-->
+          <a routerLink="/product/{{ b._id }}" class="grey-text">
+            <h3 id="title">{{ b.title | titlecase }}</h3>
+          </a>
+          <span>{{ b.author }}</span>
+
+          <div class="row">
+            <p>{{ b.price | currency: "INR" }}</p>
+            <p>{{ b.city }}</p>
+          </div>
+        </div>
+        <!--Card content-->
+      </div>
+    </div>
+  </div>
+  <br /><br />
+
+  <div class="row">
+    <div class="col-lg-9"></div>
+    <div class="col-lg-3">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+</div>

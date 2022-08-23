@@ -1,0 +1,32 @@
+.card {
+  margin: 20px 05px;
+}
+.card:hover {
+  width: 250px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+h1 {
+  text-align: center;
+}
+
+.checked {
+  color: orange;
+}
+
+.view img {
+  height: 200px;
+}
+
+#title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+a:hover {
+  color: blue;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}

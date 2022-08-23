@@ -1,0 +1,38 @@
+<div class="container">
+  <br />
+  <h1>You can also like</h1>
+  <br />
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5">
+    <div class="col" *ngFor="let b of books">
+      <div class="card" style="width: 12rem; height: 360px">
+        <!--Card image-->
+        <div class="view overlay">
+          <img
+            src="http://localhost:3000/{{ b.imgUrl }}"
+            class="card-img-top"
+            alt=""
+          />
+        </div>
+        <!--Card image-->
+
+        <!--Card content-->
+        <div class="card-body">
+          <!--Category & Title-->
+          <a routerLink="/product/{{ b._id }}" class="grey-text">
+            <h3 id="title">{{ b.title }}</h3></a
+          >
+          <span>{{ b.author }}</span>
+          <br />
+          <br />
+
+          <div class="row">
+            <p>&#8377; {{ b.price }}</p>
+            <p>{{ b.city }}</p>
+          </div>
+        </div>
+
+        <!--Card content-->
+      </div>
+    </div>
+  </div>
+</div>

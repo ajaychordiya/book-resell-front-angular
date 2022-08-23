@@ -1,0 +1,127 @@
+<br />
+<br /><br />
+
+<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+  <mat-card fxFlex="50">
+    <mat-toolbar color="basic">
+      <span>Registration</span>
+    </mat-toolbar>
+    <form #register="ngForm" (submit)="onRegisterSubmit()">
+      <br />
+      <label for="name" class="visually-hidden">Name</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        placeholder="Full Name"
+        [(ngModel)]="name"
+        name="name"
+        #name1="ngModel"
+        required
+        autofocus
+      />
+      <div
+        *ngIf="name1.invalid && (name1.dirty || name1.touched)"
+        class="alert alert-danger"
+      >
+        <div *ngIf="name1.errors.required">Name is required.</div>
+        <div *ngIf="name1.errors.minlength">
+          Name must be at least 2 characters long.
+        </div>
+        <div *ngIf="name1.errors.forbiddenName">Name cannot be Bob.</div>
+      </div>
+      <br />
+      <label for="inputEmail" class="visually-hidden">Email address</label>
+      <input
+        type="email"
+        id="inputEmail"
+        class="form-control"
+        placeholder="Email address"
+        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+        [(ngModel)]="email"
+        name="email"
+        #name2="ngModel"
+        required
+      />
+      <div
+        *ngIf="name2.invalid && (name2.dirty || name2.touched)"
+        class="alert alert-danger"
+      >
+        <div *ngIf="name2.errors.required">Email is required.</div>
+        <div *ngIf="name2.errors.minlength">
+          email must be at least 10 characters long.
+        </div>
+        <div *ngIf="name2.dirty">Invalid email</div>
+      </div>
+      <br />
+      <label for="inputPassword" class="visually-hidden">Password</label>
+      <input
+        type="password"
+        id="inputPassword"
+        class="form-control"
+        placeholder="Password"
+        minlength="8"
+        pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
+        [(ngModel)]="password"
+        name="password"
+        #pass="ngModel"
+        required
+      />
+      <div
+        *ngIf="pass.invalid && (pass.dirty || pass.touched)"
+        class="alert alert-danger"
+      >
+        <div *ngIf="pass.errors.required">Email is required.</div>
+        <div *ngIf="pass.errors.minlength">
+          email must be at least 10 characters long.
+        </div>
+        <div *ngIf="pass.dirty">
+          Invalid Password Password should contain atleast
+          <ul>
+            <li><p>minlength should be 8</p></li>
+            <li><p>Atleast 1 uppercase</p></li>
+            <li><p>Atleast 1 lowercase</p></li>
+            <li><p>Atleast 1 special characters</p></li>
+          </ul>
+        </div>
+      </div>
+      <br />
+      <label for="mobile_no" class="visually-hidden">mobile_no</label>
+      <input
+        type="text"
+        id="mobile_no"
+        class="form-control"
+        placeholder="Mobile_No"
+        pattern="^([0|\+[0-9]{1,5})?([7-9][0-9]{9})$"
+        [(ngModel)]="mobile_no"
+        name="mobile_no"
+        #no1="ngModel"
+        required
+        autofocus
+      />
+      <div
+        *ngIf="no1.invalid && (no1.dirty || no1.touched)"
+        class="alert alert-danger"
+      >
+        <div *ngIf="no1.errors.required">Mobile_No is required.</div>
+        <div *ngIf="no1.errors.minlength">
+          Mobile_No must be at least 10 characters long.
+        </div>
+        <div *ngIf="no1.dirty">Invalid Mobile_No</div>
+      </div>
+      <br />
+      <!--           
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button> -->
+      <button mat-raised-button color="primary">Sign up</button>
+      <br />
+      <hr />
+      <h3>Already have account <a routerLink="/login">Login</a></h3>
+    </form>
+    <div class="alert alert-success" *ngIf="showSucessMessage">
+      saved Sucessfully
+    </div>
+    <div class="alert alert-danger" *ngIf="showErrorMessage">
+      Email already taken
+    </div>
+  </mat-card>
+</div>

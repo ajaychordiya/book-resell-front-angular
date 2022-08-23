@@ -1,0 +1,88 @@
+<div class="container">
+  <br />
+  <br /><br />
+  <div class="contact-image">
+    <img
+      src="https://image.ibb.co/kUagtU/rocket_contact.png"
+      alt="rocket_contact"
+    />
+  </div>
+  <form (submit)="onSubmit()">
+    <h3>Drop Us a Message</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            #name1="ngModel"
+            placeholder="Your Name *"
+            [(ngModel)]="name"
+            name="name"
+            required
+          />
+          <div
+            *ngIf="name1.invalid && (name1.dirty || name1.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="name1.errors.required">Name is required.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            #n2="ngModel"
+            [(ngModel)]="email"
+            name="email"
+            class="form-control"
+            placeholder="Your Email *"
+            required
+          />
+          <div
+            *ngIf="n2.invalid && (n2.dirty || n2.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="n2.errors.required">Email is required.</div>
+            <div *ngIf="n2.errors.minlength">
+              Email must be at least 10 characters long.
+            </div>
+            <div *ngIf="n2.errors.forbiddenName">Email cannot be Bob.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            #no1="ngModel"
+            [(ngModel)]="mobile_no"
+            name="mobile_no"
+            class="form-control"
+            placeholder="Your Phone Number *"
+            required
+          />
+          <div
+            *ngIf="no1.invalid && (no1.dirty || no1.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="no1.errors.required">Mobile_No is required.</div>
+            <div *ngIf="no1.errors.minlength">
+              Mobile_No must be at least 10 characters long.
+            </div>
+            <div *ngIf="no1.dirty">Invalid Mobile_No</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <textarea
+            name="msg"
+            class="form-control"
+            [(ngModel)]="msg"
+            placeholder="Your Message *"
+            required
+          ></textarea>
+        </div>
+      </div>
+      <button mat-raised-button color="primary">Send</button>
+    </div>
+  </form>
+</div>
