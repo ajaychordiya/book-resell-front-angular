@@ -63,6 +63,6 @@ export class AuthServiceService {
   }
 
   getUsers(id: string) {
-    return this.http.get(`http://localhost:3000/api/user/${id}`);
+    return this.http.get(`https://book-resellll.herokuapp.com/api/user/${id}`);
   }
 }

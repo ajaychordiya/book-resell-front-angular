@@ -18,7 +18,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     const id = this.route.snapshot.params['id'];
     console.log(id);
 
-    let book = this.http.get(`http://localhost:3000/api/${id}`);
+    let book = this.http.get(`https://book-resellll.herokuapp.com/api/${id}`);
     this.subs.add(
       book.subscribe((data) => {
         this.books = data;

@@ -74,7 +74,9 @@ export class HeaderComponent implements OnInit, OnChanges {
     this.user = localStorage.getItem('user');
     console.log(this.user);
     if (this.auth) {
-      this.userInfo = this.http.get(`http://localhost:3000/${this.user}`);
+      this.userInfo = this.http.get(
+        `https://book-resellll.herokuapp.com/${this.user}`
+      );
       this.userInfo.subscribe((data) => (this.users = data.email));
     }
   }

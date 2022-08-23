@@ -27,7 +27,7 @@ export class ContactUsComponent implements OnInit, OnDestroy {
     };
     this.subs.add(
       this.http
-        .post('http://localhost:3000/contactus/', user)
+        .post('https://book-resellll.herokuapp.com/contactus/', user)
         .subscribe((res) => {
           this.router.navigateByUrl('/home');
         })
